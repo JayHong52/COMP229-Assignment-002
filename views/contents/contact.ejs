@@ -1,0 +1,81 @@
+<%- include .././partials/header.ejs %>
+    <%- include .././partials/main_nav.ejs %>
+
+        <!-- Main Contents: Contact Us -->
+
+        <main>
+            <div class="container mx-5 my-5 position-relative">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+
+                        <!-- Business Card -->
+
+                        <div class="px-5 pb-3">
+                            <p>
+                            <h1>Contact Us</h1>
+                            <address>
+                                <strong>JayHong Web Development</strong>
+                                <br>
+                                1021 Midland Avenue
+                                <br>
+                                Scarborough, Onatario, M1K 4G7
+                                <br>
+                                (437) 236-6523
+                            </address>
+                            <address>
+                                <strong>Jiwoong Hong</strong>
+                                <br>
+                                <a href="mailto:jhong52@my.centennialcollge.ca">jhong52@my.centennialcollge.ca</a>
+                            </address>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+
+                        <!-- Form: Business Inquery -->
+                        <div class="px-5 pb-5">
+                            <div class="card card-body bg-light">
+                                <form class="row g-1 needs-validation" novalidate>
+                                    <div class="col-md-6 p-2">
+                                        <label for="contactFormFirstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="contactFormFirstName"
+                                            placeholder="Jay">
+                                    </div>
+                                    <div class="col-md-6 p-2">
+                                        <label for="contactFormLastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="contactFormLastName"
+                                            placeholder="Hong">
+                                    </div>
+                                    <div class="mb-1 px-2">
+                                        <label for="contactFormEmail" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="contactFormEmail"
+                                            placeholder="jayhong@example.com" />
+                                    </div>
+                                    <div class="col-md-12 px-2">
+                                        <label for="contactFormMessage" class="form-label">Your Message</label>
+                                        <textarea class="form-control" id="contactFormMessage"></textarea>
+                                    </div>
+                                </form>
+                                <div class="row">
+                                    <div class="col-5"></div>
+                                    <div class="col-2 pt-2 text-center">
+                                        <button id="btnContactSubmit" onclick="clickContactSubmit()"
+                                            class="btn btn-outline-dark">Submit</button>
+                                    </div>
+                                    <div class="col-5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </main>
+
+        <%- include .././partials/bottom_nav.ejs %>
+            <%- include .././partials/footer.ejs %>
