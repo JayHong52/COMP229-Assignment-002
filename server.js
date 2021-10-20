@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 "use strict";
-var app = require('./app');
+var app2 = require('./config/app');
 var debug = require('debug')('week3-2:server');
 var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-var server = http.createServer(app);
+app2.set('port', port);
+var server = http.createServer(app2);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
