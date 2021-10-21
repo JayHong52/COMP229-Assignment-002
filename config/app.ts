@@ -7,31 +7,32 @@
   ============================================*/
 
 // Installed 3rd Party Packages
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
+
+
+import createError, { HttpError } from "http-errors";
+import express from 'express';
+import path from 'path';
+import cookieParser from "cookie-parser";
+import logger from 'morgan';
+
+import indexRouter from '../routes/index';
+import usersRouter from '../routes/users';
 
 // Database Setup
-let mongoose= require('mongoose');
-let DB = require('./db');
+import mongoose from 'mongoose';
+const DB = mongoose.connection;
 
 // Point Mongoose to the DB URI
-mongoose.connect(DB.URI);
+//mongoose.connect(DB.URI);
 //mongoose.connect(DB.URI, {userNewUrlParser: true});
 
-
-let mongoDB = mongoose.connection;
+const mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', ()=> {
   console.log('Connected to MongoDB...');
 });
 
-let indexRouter = require('../routes/index');
-let usersRouter = require('../routes/users');
-
-let app: any = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -63,4 +64,4 @@ app.use(function(err: { message: any; status: any; }, req: { app: { get: (arg0: 
   res.render('error', {title: "Oops, You have an error!"});
 });
 
-module.exports = app;
+export default app;

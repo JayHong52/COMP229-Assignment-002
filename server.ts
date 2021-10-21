@@ -11,22 +11,24 @@
 /** 
  * Module dependencies.
  */
-var app2 = require('./config/app');
-var debug = require('debug')('week3-2:server');
-var http = require('http');
+import http from 'http';
+import debug from 'debug';
+debug('week3-2:server');
+
+import app from './config/app';
 
 /** 
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
-app2.set('port', port);
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 /** 
  * Create HTTP server.
  */
 
-var server = http.createServer(app2);
+const server = http.createServer(app);
 
 /** 
  * Listen on provided port, on all network interfaces.

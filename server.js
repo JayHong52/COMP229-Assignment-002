@@ -1,11 +1,16 @@
 #!/usr/bin/env node
 "use strict";
-var app2 = require('./config/app');
-var debug = require('debug')('week3-2:server');
-var http = require('http');
-var port = normalizePort(process.env.PORT || '3000');
-app2.set('port', port);
-var server = http.createServer(app2);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const http_1 = __importDefault(require("http"));
+const debug_1 = __importDefault(require("debug"));
+(0, debug_1.default)('week3-2:server');
+const app_1 = __importDefault(require("./config/app"));
+const port = normalizePort(process.env.PORT || '3000');
+app_1.default.set('port', port);
+const server = http_1.default.createServer(app_1.default);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -44,6 +49,6 @@ function onListening() {
     var bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+    (0, debug_1.default)('Listening on ' + bind);
 }
 //# sourceMappingURL=server.js.map

@@ -1,17 +1,12 @@
-/*=============================================
-  FileName: /routes/users.js
-  ProjectName: COMP229-005, Assignment #1
-  CompanyName: Centennial Collge, Fall 2021
-  Author: Jiwoong Hong, 301153138
-  Date: 2021-10-02
-  ============================================*/
-
-var express = require('express');
-var router = express.Router();
-
-// Get Users Listing
-router.get('/', function(req, res, next) {
-  res.send('Placeholder'); 
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const router = express_1.default.Router();
+router.get('/', function (req, res, next) {
+    res.send('Placeholder');
 });
-
-module.exports = router;
+exports.default = router;
+//# sourceMappingURL=users.js.map
