@@ -1,19 +1,19 @@
 import express from 'express';
 const router = express.Router();
 
-// Contact to BizContacts Model
+// Contact to Business Contacts Model
 import mongoose from 'mongoose';
-import bizContacts from '../models/bizContacts';
+import business from '../models/business';
 
 router.get('/', (req, res, next) => {
-    bizContacts.find((err, bizContactsList) => {
+    business.find((err, businessList) => {
         if (err)
         {
             return console.error(err);
         }
         else 
         {
-            res.render('contents/businesscontacts', {title: 'Business Contacts List', BizContactsList: bizContactsList})            
+            res.render('contents/business', {title: 'Business Contacts List', businessList: businessList})            
         };
     });
 });

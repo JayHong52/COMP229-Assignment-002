@@ -15,7 +15,7 @@ import http from 'http';
 import debug from 'debug';
 debug('week3-2:server');
 
-import app from './config/app';
+import app from './server/config/app';
 
 /** 
  * Get port from environment and store in Express.

@@ -17,7 +17,7 @@ import logger from 'morgan';
 
 import indexRouter from '../routes/index';
 import usersRouter from '../routes/users';
-import bizContactsRouter from '../routes/bizContacts';
+import businessRouter from '../routes/business';
 
 // Database Setup
 import mongoose from 'mongoose';
@@ -34,7 +34,7 @@ mongoDB.once('open', ()=> {
   console.log('Connected to MongoDB...');
 });
 
-const app = express();
+const app = express(); 
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -44,12 +44,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.static(path.join(__dirname, '../node_modules')));
+app.use(express.static(path.join(__dirname, '../../client')));
+app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/bizContacts', bizContactsRouter);
+app.use('/business', businessRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_req: any, _res: any, next: (arg0: any) => void) {

@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-let bizContactsModel = new mongoose_1.default.Schema({
+let businessModel = new mongoose_1.default.Schema({
     name: String,
-    contactNumber: String,
-    contactEmail: String,
+    phone: String,
+    email: String,
     remarks: String
 }, {
-    collection: 'bizContacts'
+    collection: 'business'
 });
-exports.default = mongoose_1.default.model('bizContacts', bizContactsModel);
-//# sourceMappingURL=bizContacts.js.map
+exports.default = mongoose_1.default.model('business', businessModel);
+//# sourceMappingURL=business.js.map

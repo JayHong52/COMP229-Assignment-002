@@ -5,17 +5,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
-const bizContacts_1 = __importDefault(require("../models/bizContacts"));
+const business_1 = __importDefault(require("../models/business"));
 router.get('/', (req, res, next) => {
-    bizContacts_1.default.find((err, bizContactsList) => {
+    business_1.default.find((err, businessList) => {
         if (err) {
             return console.error(err);
         }
         else {
-            res.render('contents/businesscontacts', { title: 'Business Contacts List', BizContactsList: bizContactsList });
+            res.render('contents/business', { title: 'Business Contacts List', businessList: businessList });
         }
         ;
     });
 });
 exports.default = router;
-//# sourceMappingURL=bizContacts.js.map
+//# sourceMappingURL=business.js.map
