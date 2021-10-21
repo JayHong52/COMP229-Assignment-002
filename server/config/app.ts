@@ -15,23 +15,21 @@ import path from 'path';
 import cookieParser from "cookie-parser";
 import logger from 'morgan';
 
+// Import Routers
 import indexRouter from '../routes/index';
-import usersRouter from '../routes/users';
 import businessRouter from '../routes/business';
 
-// Database Setup
 import mongoose from 'mongoose';
-import DB from './db';
-//const DB = mongoose.connection;
 
-// Point Mongoose to the DB URI
-mongoose.connect(DB.URI);
-//mongoose.connect(DB.URI, {useNewUrlParser: true}, {useUnifiedTopology: true});
+// Database Configuration 
+import * as DBConfig from './db';
+mongoose.connect(DBConfig.LocalUri);
 
-const mongoDB = mongoose.connection;
-mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
-mongoDB.once('open', ()=> {
-  console.log('Connected to MongoDB...');
+const DB = mongoose.connection;
+
+DB.on('error', console.error.bind(console, 'Connection Error:'));
+DB.once('open', ()=> {
+  console.log('Connected to MongoDB: @' + DBConfig.HostName);
 });
 
 const app = express(); 
@@ -47,8 +45,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
+
+// Router Middlewear 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/business', businessRouter);
 
 // catch 404 and forward to error handler

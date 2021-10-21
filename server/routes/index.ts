@@ -7,41 +7,28 @@
   ============================================*/
 
 import express from 'express';
+import { DisplayAboutPage, DisplayContactUsPage, DisplayHomePage, DisplayLogInPage, DisplayProjectPage, DisplayServicePage } from '../controllers';
 const router = express.Router();
 
 // Get Home Page  
-router.get('/', function(req, res, next) {
-  res.render('contents/home', {title: 'Home'});
-});
+router.get('/', DisplayHomePage);
 
 // Get Home Page (/home)
-router.get('/home', function(req, res, next) {
-  res.render('contents/home', {title: 'Home'});
-});
+router.get('/home', DisplayHomePage);
 
 // Get About Us Page
-router.get('/about', function(req, res, next) {
-  res.render('contents/about', {title: 'About Us'});
-});
+router.get('/about', DisplayAboutPage);
 
 // Get Projects Page
-router.get('/projects', function(req, res, next) {
-  res.render('contents/project', {title: 'Projects'}); 
-});
+router.get('/projects', DisplayProjectPage);
 
 // Get Service Page 
-router.get('/services', function(req, res, next) {
-  res.render('contents/service', {title: 'Services'});
-}); 
+router.get('/services', DisplayServicePage); 
 
 /* GET Contact Us page. */
-router.get('/contact', function(req, res, next) {
-  res.render('contents/contact', {title: 'Contact Us'});
-});
+router.get('/contact', DisplayContactUsPage);
 
 /* GET Log In page. */
-router.get('/login', function(req, res, next) {
-  res.render('contents/login', {title: 'Log In'});
-});
+router.get('/login', DisplayLogInPage);
 
 export default router;

@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-let businessModel = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const BusinessSchema = new Schema({
     name: String,
     phone: String,
     email: String,
@@ -10,4 +12,6 @@ let businessModel = new mongoose.Schema({
     collection: 'business'
 });
 
-export default mongoose.model('business', businessModel);
+const Model = mongoose.model("business", BusinessSchema)
+
+export default Model

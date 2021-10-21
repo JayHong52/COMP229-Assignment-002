@@ -1,0 +1,39 @@
+<%- include ../.././partials/header.ejs %>
+<%- include ../.././partials/main_nav.ejs %>
+
+    <div class="container">
+        <h1>
+            <%= title %> 
+        </h1>
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Remarks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let count = 0; count < business.length; count++) { %> 
+                        <tr>
+                            <th scope="row">
+                                <%= count + 1 %> 
+                            </th>
+                            <td><%= business[count].name %> </td>
+                            <td><%= business[count].phone %> </td>
+                            <td><%= business[count].email %> </td>
+                            <td><%= business[count].remarks %> </td>
+                        </tr>
+                        <% } %> 
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+<%- include ../.././partials/bottom_nav.ejs %> 
+<%- include ../.././partials/footer.ejs %> 

@@ -1,21 +1,22 @@
 import express from 'express';
+import { DisplayBusinessListPage } from '../controllers/business';
 const router = express.Router();
 
-// Contact to Business Contacts Model
-import mongoose from 'mongoose';
-import business from '../models/business';
 
-router.get('/', (req, res, next) => {
-    business.find((err, businessList) => {
-        if (err)
-        {
-            return console.error(err);
-        }
-        else 
-        {
-            res.render('contents/business', {title: 'Business Contacts List', businessList: businessList})            
-        };
-    });
-});
+/*
+
+http://server-url/contact/list
+http://server-url/contact/create
+http://server-url/contact/edit:id
+http://server-url/contact/delete:id
+
+*/
+
+
+// Get Display Business Contact List View
+
+router.get('/list', DisplayBusinessListPage);
+
+// Get Display Business Contact List Edit
 
 export default router;

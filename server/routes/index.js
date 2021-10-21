@@ -4,27 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const controllers_1 = require("../controllers");
 const router = express_1.default.Router();
-router.get('/', function (req, res, next) {
-    res.render('contents/home', { title: 'Home' });
-});
-router.get('/home', function (req, res, next) {
-    res.render('contents/home', { title: 'Home' });
-});
-router.get('/about', function (req, res, next) {
-    res.render('contents/about', { title: 'About Us' });
-});
-router.get('/projects', function (req, res, next) {
-    res.render('contents/project', { title: 'Projects' });
-});
-router.get('/services', function (req, res, next) {
-    res.render('contents/service', { title: 'Services' });
-});
-router.get('/contact', function (req, res, next) {
-    res.render('contents/contact', { title: 'Contact Us' });
-});
-router.get('/login', function (req, res, next) {
-    res.render('contents/login', { title: 'Log In' });
-});
+router.get('/', controllers_1.DisplayHomePage);
+router.get('/home', controllers_1.DisplayHomePage);
+router.get('/about', controllers_1.DisplayAboutPage);
+router.get('/projects', controllers_1.DisplayProjectPage);
+router.get('/services', controllers_1.DisplayServicePage);
+router.get('/contact', controllers_1.DisplayContactUsPage);
+router.get('/login', controllers_1.DisplayLogInPage);
 exports.default = router;
 //# sourceMappingURL=index.js.map
