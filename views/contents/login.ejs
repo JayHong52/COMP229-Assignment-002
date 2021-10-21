@@ -1,0 +1,55 @@
+<%- include .././partials/header.ejs %>
+  <%- include .././partials/main_nav.ejs %>
+
+    <!-- MAIN Page -->
+
+    <section class="bg-dark text-light text-center p-5">
+      <div class="container">
+        <div>
+          <h1>LOG IN</h1>
+          <div class="row">
+            <!-- Line Starts-->
+            <div class="col-3"></div>
+            <div class="col-6">
+              <hr>
+            </div>
+            <div class="col-3"></div>
+          </div> <!-- Line ends -->
+
+          <!-- Input From -->
+
+          <div class="row">
+            <!-- Line Starts-->
+            <div class="col-3"></div>
+            <div class="col-6">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+              </div>
+            <div class="col-3"></div>
+          </div> <!-- Line ends -->
+
+          <div class="row">
+            <!-- Line Starts -->
+            <div class="col-3"></div>
+            <div class="col-6">
+              <hr>
+            </div>
+            <div class="col-3"></div>
+          </div> <!-- Line Ends -->
+          <button id="btnLogIn" onclick="clickFindUs()" class="btn btn-lg btn-outline-light mt-4 mb-0">Log In</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-secondary text-light text-center p-4">
+      <h3>JAYHONG WEB DEVELOPMENT</h3>
+    </section>
+
+    <%- include .././partials/bottom_nav.ejs %>
+      <%- include .././partials/footer.ejs %>

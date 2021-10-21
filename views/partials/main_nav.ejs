@@ -53,6 +53,14 @@
               <% } %>
            <a class="nav-link" aria-current="page" href="/contact">contact us</a>
               </li>
+        
+        <% if (title=="Log In" ) { %>
+          <li class="nav-item active bg-secondary rounded-3">
+              <% } else { %>
+          <li class="nav-item">
+              <% } %>
+           <a class="nav-link" aria-current="page" href="/login">log in</a>
+              </li>
       </ul>
     </div>
   </div>
