@@ -17,14 +17,16 @@ import logger from 'morgan';
 
 import indexRouter from '../routes/index';
 import usersRouter from '../routes/users';
+import bizContactsRouter from '../routes/bizContacts';
 
 // Database Setup
 import mongoose from 'mongoose';
-const DB = mongoose.connection;
+import DB from './db';
+//const DB = mongoose.connection;
 
 // Point Mongoose to the DB URI
-//mongoose.connect(DB.URI);
-//mongoose.connect(DB.URI, {userNewUrlParser: true});
+mongoose.connect(DB.URI);
+//mongoose.connect(DB.URI, {useNewUrlParser: true}, {useUnifiedTopology: true});
 
 const mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
@@ -47,6 +49,7 @@ app.use(express.static(path.join(__dirname, '../node_modules')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/bizContacts', bizContactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_req: any, _res: any, next: (arg0: any) => void) {

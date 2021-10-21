@@ -44,9 +44,4 @@ router.get('/login', function(req, res, next) {
   res.render('contents/login', {title: 'Log In'});
 });
 
-/* GET Log In page. */
-router.get('/businesscontacts', function(req, res, next) {
-  res.render('contents/businesscontacts', {title: 'Business Contacts'});
-});
-
 export default router;

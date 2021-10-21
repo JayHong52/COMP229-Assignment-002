@@ -26,8 +26,5 @@ router.get('/contact', function (req, res, next) {
 router.get('/login', function (req, res, next) {
     res.render('contents/login', { title: 'Log In' });
 });
-router.get('/businesscontacts', function (req, res, next) {
-    res.render('contents/businesscontacts', { title: 'Business Contacts' });
-});
 exports.default = router;
 //# sourceMappingURL=index.js.map
