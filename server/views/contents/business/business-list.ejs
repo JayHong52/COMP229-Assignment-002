@@ -1,5 +1,5 @@
     <div class="container">
-        <h1>
+        <h1 class="p-3">
             <%= title %> 
         </h1>
         <div class="row">
@@ -11,8 +11,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Remarks</th>
-                        <th scope="col">
+                        <th class="text-end" scope="col">
                             <a href="/business/add" id="addButton" class="btn btn-dark btn-sm mb-1"><i class="fas fa-plus-circle"></i> Add Contact</a>
                         </th>
                       </tr>
@@ -26,11 +25,10 @@
                             <td><%= business[count].name %> </td>
                             <td><%= business[count].phone %> </td>
                             <td><%= business[count].email %> </td>
-                            <td><%= business[count].remarks %> </td>
-                            <td class="text-center"> 
+                            <td class="text-end"> 
                                 <!-- Modify & Remove Btn -->
-                                <a href="/business/edit/<%= business[count]._id %>" class="btn btn-secondary btn-sm edit"><i class="fas fa-edit fa-sm"></i> EDIT </a>
-                                <a href="/business/delete/<%= business[count]._id %>" class="btn btn-dark btn-sm edit"><i class="fas fa-edit fa-sm"></i> REMOVE</a>
+                                <a href="/business/edit/<%= business[count]._id %>" class="btn btn-secondary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Update </a>
+                                <a href="/business/delete/<%= business[count]._id %>" class="btn btn-dark btn-sm edit"><i class="fas fa-edit fa-sm"></i> Delete </a>
                             </td>
                         </tr>
                         <% } %> 

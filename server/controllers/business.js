@@ -13,7 +13,7 @@ function DisplayBusinessListPage(req, res, next) {
             res.end(err);
         }
         res.render('index', { title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: (0, utils_1.UserDisplayName)(req) });
-    });
+    }).sort('name');
 }
 exports.DisplayBusinessListPage = DisplayBusinessListPage;
 ;
@@ -25,7 +25,7 @@ function DisplayBusinessEditPage(req, res, next) {
             res.end(err);
         }
         console.log(businessListItemToEdit);
-        res.render('index', { title: "Contact Edit", page: "business/business-edit", item: businessListItemToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
+        res.render('index', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayBusinessEditPage = DisplayBusinessEditPage;

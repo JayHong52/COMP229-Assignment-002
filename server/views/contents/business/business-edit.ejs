@@ -1,43 +1,51 @@
 <div class="container">
-    <h1>
+    <h1 class="p-3">
         <%= title %>
     </h1>
     <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
         <div class="input-group mb-3">
             <span class="input-group-text" id="name">Name</span>
-            <input id="name" type="text" class="form-control" placeholder="Name"
-                aria-label="Name" aria-describedby="Name" name="name"
-                value="<%= item.name %>" required>
+            <input id="name" type="text" class="form-control" placeholder="Name" aria-label="Name"
+                aria-describedby="Name" name="name" value="<%= item.name %>" required>
         </div>
+
         <div class="input-group mb-3">
             <span class="input-group-text" id="phone">Phone Number</span>
-            <input id="phone" type="text" class="form-control" placeholder="Phone Number"
-                aria-label="Phone Number" aria-describedby="Phone Number" name="phone"
-                value="<%= item.phone %>" required>
+            <input id="phone" type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number"
+                aria-describedby="Phone Number" name="phone" value="<%= item.phone %>" required>
         </div>
+
         <div class="input-group mb-3">
             <span class="input-group-text" id="email">Email Address</span>
-            <input id="email" type="text" class="form-control" placeholder="Email Address"
-                aria-label="Email Address" aria-describedby="Email Address" name="email"
-                value="<%= item.email %>" required>
+            <input id="email" type="text" class="form-control" placeholder="Email Address" aria-label="Email Address"
+                aria-describedby="Email Address" name="email" value="<%= item.email %>" required>
         </div>
 
         <div class="input-group mb-3">
             <span class="input-group-text" id="remarks">Remarks</span>
-            <input id="remarks" type="text" class="form-control" placeholder="Remarks"
-                aria-label="Remarks" aria-describedby="Remarks" name="remarks"
-                value="<%= item.remarks %>" required>
+            <input id="remarks" type="text" class="form-control" placeholder="Remarks" aria-label="Remarks"
+                aria-describedby="Remarks" name="remarks" value="<%= item.remarks %>" required>
 
-        <% if (title.search("Edit")> -1 ) { %>
-            <button type="submit" id="submitButton" class="btn btn-primary">
-                <i class="fas fa-edit fa-lg"></i>Edit
-            </button>
-        <% } else { %>
-            <button type="submit" id="submitButton" class="btn btn-primary">
-                <i class="fas fa-edit fa-lg"></i>Add
-            </button>
-        <% } %>
-            <a href="/business/list" id="cancelButton" type="button" class="btn btn-warning">
-                <i class="fas fa-undo"></i> Cancel</a>
+                <% if (title.search("Update") > -1 ) { %>
+                    <button type="submit" id="submitButton" class="btn btn-secondary">
+                        <i class="fas fa-edit fa-lg"></i>Update
+                    </button>
+                    <a href="/business/list" id="cancelButton" type="button" class="btn btn-dark"><i class="fas fa-undo"></i> Cancel</a>
+                
+                <!-- Delete Button -->
+                <div class="row">
+                    <div class="col-12">
+                    <a href="/business/delete" id="deleteButton" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a> 
+                    </div>
+                </div>
+
+                <% } else { %>
+                    <button type="submit" id="submitButton" class="btn btn-secondary">
+                        <i class="fas fa-edit fa-lg"></i>Add
+                    </button>
+                    <a href="/business/list" id="cancelButton" type="button" class="btn btn-dark"><i class="fas fa-undo"></i> Cancel</a>
+
+                <% } %>
+
     </form>
 </div>

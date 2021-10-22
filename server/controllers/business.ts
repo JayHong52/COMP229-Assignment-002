@@ -12,10 +12,9 @@ export function DisplayBusinessListPage(req: express.Request, res: express.Respo
             console.error(err);
             res.end(err);
         }
-        //console.log(businessCollection);
         res.render('index', {title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: UserDisplayName(req)})
         }
-    )
+    ).sort('name'); 
 };
 
 // ===========================
@@ -29,7 +28,7 @@ export function DisplayBusinessEditPage(req: express.Request, res: express.Respo
             res.end(err);
         }
         console.log(businessListItemToEdit);
-        res.render('index', { title: "Contact Edit", page: "business/business-edit", item: businessListItemToEdit, displayName: UserDisplayName(req)})
+        res.render('index', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: UserDisplayName(req)})
     })
 };
 
@@ -45,6 +44,7 @@ export function ProcessBusinessEditPage(req: express.Request, res: express.Respo
         "email": req.body.email,
         "remarks": req.body.remarks
     });
+
     BusinessModel.updateOne({ _id: id }, updatedItem, {}, (err) => {
         if (err) {
             console.error(err);
@@ -53,6 +53,10 @@ export function ProcessBusinessEditPage(req: express.Request, res: express.Respo
         res.redirect('/business/list');
     })
 }
+// =====================================
+//   Business-edit (REMOVE ) : PROCESS
+// =====================================
+
 
 // ====================================
 //   Business-edit : Create - DISPLAY

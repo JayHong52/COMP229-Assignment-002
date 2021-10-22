@@ -1,3 +1,11 @@
+/*=============================================
+  FileName: controllers/user.ts
+  ProjectName: COMP229-005, Assignment #2
+  CompanyName: Centennial Collge, Fall 2021
+  Author: Jiwoong Hong, 301153138
+  Date: 2021-10-22
+  ============================================*/
+
 import { NextFunction, Request, Response } from "express";
 import passport from "passport";
 import { UserDisplayName } from "../utils";
@@ -12,7 +20,11 @@ export async function DisplayLogInPage(req: Request, res: Response) {
     }
     return res.redirect('/business/list');
 }
-export function ProcessLogInPage(req: Request, res: Response, next: NextFunction) {
+
+// =======================
+//   Process: Login Page
+// =======================
+export function ProcessLogInPage(req: Request, res: Response, next: NextFunction) { 
     return res.redirect('/business/list')
 }
 
@@ -31,16 +43,15 @@ export async function DisplayRegisterPage(req: Request, res: Response, next: Nex
 // ==========================
 export function ProcessRegisterPage(req: Request, res: Response, next: NextFunction) {
     passport.authenticate('signup', function (err, user, info) {
+        //console.log(err, user, info);
         if (err) {
             return next(err);
         }
         if (!user) {
             return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: UserDisplayName(req) })
         }
-
         return res.redirect('/auth/login');
-    })
-        (req, res, next);
+    })(req, res, next);
 }
 
 // ==========================

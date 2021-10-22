@@ -20,7 +20,7 @@ import passport from 'passport';
 import MongoStore from 'connect-mongo';
 import session from 'express-session'
 import flash from 'connect-flash';
-import { isLoggedIn } from "../middlewears/auth";
+import { isLoggedIn } from "../middlewares/auth";
 
 // Import Routers
 import indexRouter from '../routes/index';
@@ -73,7 +73,7 @@ app.use(session(StoreOptions));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Router Middlewear 
+// Router Middleware 
 app.use('/', indexRouter);
 app.use('/business', isLoggedIn, businessRouter);
 app.use('/auth', userRouter);
