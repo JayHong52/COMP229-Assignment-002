@@ -1,22 +1,24 @@
 import express from 'express';
-import { DisplayBusinessListPage } from '../controllers/business';
+import { DisplayBusinessAddPage, DisplayBusinessEditPage, DisplayBusinessListPage, ProcessBusinessAddPage, ProcessBusinessDeletePage, ProcessBusinessEditPage } from '../controllers/business';
 const router = express.Router();
 
-
-/*
-
-http://server-url/contact/list
-http://server-url/contact/create
-http://server-url/contact/edit:id
-http://server-url/contact/delete:id
-
-*/
-
-
-// Get Display Business Contact List View
-
+// Business-list : DISPLAY 
 router.get('/list', DisplayBusinessListPage);
 
-// Get Display Business Contact List Edit
+// Business-edit : DISPLAY
+router.get('/edit/:id', DisplayBusinessEditPage);
+
+// Business-edit : PROCESS
+router.post('/edit/:id', ProcessBusinessEditPage);
+
+// Business-edit : Create - DISPLAY
+router.get('/add', DisplayBusinessAddPage);
+
+// Business-edit : Create - PROCESS 
+router.post('/add', ProcessBusinessAddPage);
+
+// Business-edit : Delete - PROCESS 
+router.get('/delete/:id', ProcessBusinessDeletePage);
 
 export default router;
+

@@ -11,8 +11,8 @@ const BusinessSchema = new Schema({
     email: String,
     remarks: String
 }, {
-    collection: 'business'
+    collection: "businessContacts"
 });
-const Model = mongoose_1.default.model("business", BusinessSchema);
+const Model = mongoose_1.default.model("businessContacts", BusinessSchema);
 exports.default = Model;
 //# sourceMappingURL=business.js.map

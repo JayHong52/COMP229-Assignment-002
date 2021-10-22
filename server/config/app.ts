@@ -23,6 +23,7 @@ import mongoose from 'mongoose';
 
 // Database Configuration 
 import * as DBConfig from './db';
+//mongoose.connect((DBConfig.RemoteUri) ? DBConfig.RemoteUri : DBConfig.LocalUri);
 mongoose.connect(DBConfig.LocalUri);
 
 const DB = mongoose.connection;

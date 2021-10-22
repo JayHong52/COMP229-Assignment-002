@@ -9,9 +9,9 @@ const BusinessSchema = new Schema({
     remarks: String
 },
 {
-    collection: 'business'
+    collection: "businessContacts"
 });
 
-const Model = mongoose.model("business", BusinessSchema)
+const Model = mongoose.model("businessContacts", BusinessSchema)
 
 export default Model
