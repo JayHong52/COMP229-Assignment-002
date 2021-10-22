@@ -8,23 +8,40 @@
 
 // Installed 3rd Party Packages
 
-
 import createError, { HttpError } from "http-errors";
 import express from 'express';
 import path from 'path';
 import cookieParser from "cookie-parser";
 import logger from 'morgan';
 
+import mongoose from 'mongoose';
+
+import passport from 'passport';
+import MongoStore from 'connect-mongo';
+import session from 'express-session'
+import flash from 'connect-flash';
+import { isLoggedIn } from "../middlewears/auth";
+
 // Import Routers
 import indexRouter from '../routes/index';
 import businessRouter from '../routes/business';
-
-import mongoose from 'mongoose';
+import userRouter from '../routes/user';
 
 // Database Configuration 
-import * as DBConfig from './db';
-//mongoose.connect((DBConfig.RemoteUri) ? DBConfig.RemoteUri : DBConfig.LocalUri);
-mongoose.connect(DBConfig.LocalUri);
+import * as DBConfig from './db';  
+mongoose.connect((DBConfig.RemoteUri) ? DBConfig.RemoteUri : DBConfig.LocalUri);
+
+const StoreOptions = {
+  store: MongoStore.create({
+    mongoUrl: (DBConfig.RemoteUri) ? DBConfig.RemoteUri : DBConfig.LocalUri
+  }),
+  secret: DBConfig.Secret,
+  saveUninitialized: false,
+  resave: false,
+  cookie: {
+    maxAge: 600000
+  }
+}
 
 const DB = mongoose.connection;
 
@@ -46,10 +63,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
+// Setup connect-flash
+app.use(flash());
+
+// express-session initialize
+app.use(session(StoreOptions));
+
+// Passport initialize
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Router Middlewear 
 app.use('/', indexRouter);
-app.use('/business', businessRouter);
+app.use('/business', isLoggedIn, businessRouter);
+app.use('/auth', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(_req: any, _res: any, next: (arg0: any) => void) {

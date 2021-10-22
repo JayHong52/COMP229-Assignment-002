@@ -28,7 +28,4 @@ router.get('/services', DisplayServicePage);
 /* GET Contact Us page. */
 router.get('/contact', DisplayContactUsPage);
 
-/* GET Log In page. */
-router.get('/login', DisplayLogInPage);
-
 export default router;

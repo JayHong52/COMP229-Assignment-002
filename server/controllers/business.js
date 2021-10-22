@@ -5,13 +5,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProcessBusinessDeletePage = exports.ProcessBusinessAddPage = exports.DisplayBusinessAddPage = exports.ProcessBusinessEditPage = exports.DisplayBusinessEditPage = exports.DisplayBusinessListPage = void 0;
 const business_1 = __importDefault(require("../models/business"));
+const utils_1 = require("../utils");
 function DisplayBusinessListPage(req, res, next) {
     business_1.default.find(function (err, businessCollection) {
         if (err) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Business Contact List', page: 'business/business-list', business: businessCollection });
+        res.render('index', { title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: (0, utils_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayBusinessListPage = DisplayBusinessListPage;
@@ -24,7 +25,7 @@ function DisplayBusinessEditPage(req, res, next) {
             res.end(err);
         }
         console.log(businessListItemToEdit);
-        res.render('index', { title: "Contact Edit", page: "business/business-edit", item: businessListItemToEdit });
+        res.render('index', { title: "Contact Edit", page: "business/business-edit", item: businessListItemToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayBusinessEditPage = DisplayBusinessEditPage;
@@ -48,7 +49,7 @@ function ProcessBusinessEditPage(req, res, next) {
 }
 exports.ProcessBusinessEditPage = ProcessBusinessEditPage;
 function DisplayBusinessAddPage(req, res, next) {
-    res.render('index', { title: 'Add Business Contact', page: 'business/business-edit', item: '' });
+    res.render('index', { title: 'Add Business Contact', page: 'business/business-edit', item: '', displayName: (0, utils_1.UserDisplayName)(req) });
 }
 exports.DisplayBusinessAddPage = DisplayBusinessAddPage;
 function ProcessBusinessAddPage(req, res, next) {

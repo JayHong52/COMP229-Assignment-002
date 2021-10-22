@@ -1,5 +1,6 @@
 import express from 'express';
 import BusinessModel from '../models/business';
+import { UserDisplayName } from '../utils';
 
 // ===========================
 //   Business-list : DISPLAY 
@@ -12,7 +13,7 @@ export function DisplayBusinessListPage(req: express.Request, res: express.Respo
             res.end(err);
         }
         //console.log(businessCollection);
-        res.render('index', {title: 'Business Contact List', page: 'business/business-list', business: businessCollection})
+        res.render('index', {title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: UserDisplayName(req)})
         }
     )
 };
@@ -28,7 +29,7 @@ export function DisplayBusinessEditPage(req: express.Request, res: express.Respo
             res.end(err);
         }
         console.log(businessListItemToEdit);
-        res.render('index', { title: "Contact Edit", page: "business/business-edit", item: businessListItemToEdit})
+        res.render('index', { title: "Contact Edit", page: "business/business-edit", item: businessListItemToEdit, displayName: UserDisplayName(req)})
     })
 };
 
@@ -57,7 +58,7 @@ export function ProcessBusinessEditPage(req: express.Request, res: express.Respo
 //   Business-edit : Create - DISPLAY
 // ====================================
 export function DisplayBusinessAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-    res.render('index', { title: 'Add Business Contact', page: 'business/business-edit', item: '' });
+    res.render('index', { title: 'Add Business Contact', page: 'business/business-edit', item: '', displayName: UserDisplayName(req) });
 }
 
 // ====================================
