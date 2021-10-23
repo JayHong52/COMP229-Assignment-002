@@ -1,51 +1,104 @@
 <div class="container">
+        
     <h1 class="p-3">
         <%= title %>
     </h1>
     <form method="POST" class="col-lg-6 col-md-10 col-sm-10">
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="name">Name</span>
-            <input id="name" type="text" class="form-control" placeholder="Name" aria-label="Name"
-                aria-describedby="Name" name="name" value="<%= item.name %>" required>
-        </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="phone">Phone Number</span>
-            <input id="phone" type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number"
-                aria-describedby="Phone Number" name="phone" value="<%= item.phone %>" required>
-        </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="email">Email Address</span>
-            <input id="email" type="text" class="form-control" placeholder="Email Address" aria-label="Email Address"
-                aria-describedby="Email Address" name="email" value="<%= item.email %>" required>
-        </div>
+        <div class="form-floating mb-3 col-12">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="name"
+              name="name" 
+              aria-label="Name"
+              aria-describedby="Name"
+              required
+              value="<%= item.name %>"
+              placeholder="Name">
+            <label class="ms-0" for="name">Name</label>
+          </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="remarks">Remarks</span>
-            <input id="remarks" type="text" class="form-control" placeholder="Remarks" aria-label="Remarks"
-                aria-describedby="Remarks" name="remarks" value="<%= item.remarks %>" required>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="phone"
+              name="phone" 
+              aria-label="Phone Number"
+              aria-describedby="Phone Number"
+              required
+              value="<%= item.phone %>"
+              placeholder="Phone Number">
+              <label class="ms-0" for="phone">Phone Number</label>
+            </div>
+        
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="email"
+              name="email" 
+              aria-label="Email Address"
+              aria-describedby="Email Address"
+              required
+              value="<%= item.email %>"
+              placeholder="Email Address">
+              <label class="ms-0" for="email">Email Address</label>
+            </div>
 
-                <% if (title.search("Update") > -1 ) { %>
-                    <button type="submit" id="submitButton" class="btn btn-secondary">
-                        <i class="fas fa-edit fa-lg"></i>Update
-                    </button>
-                    <a href="/business/list" id="cancelButton" type="button" class="btn btn-dark"><i class="fas fa-undo"></i> Cancel</a>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="remarks"
+              name="remarks" 
+              aria-label="Remarks"
+              aria-describedby="Remarks"
+              value="<%= item.remarks %>"
+              placeholder="Remarks">
+              
+              <label class="ms-0" for="remarks">Remarks</label>
+          </div>
                 
-                <!-- Delete Button -->
-                <div class="row">
-                    <div class="col-12">
-                    <a href="/business/delete" id="deleteButton" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a> 
+                <!-- Update: 3 Buttons (Update, Cancel, Delete) -->
+                <% if (title.search("Update") > -1 ) { %>
+                    
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <!-- Button: Update -->
+                            <button type="submit" id="submitButton" class="btn btn-secondary">
+                                <i class="fas fa-edit"></i> Update
+                            </button>            
+                            <!-- Button: Cancel -->
+                            <a href="/business/list" id="cancelButton" type="button" class="btn btn-dark">
+                                <i class="fas fa-undo"></i> Cancel
+                            </a>
+                        </div>
+                       <div class="col-lg-6 col-md-6 col-sm-12 text-end">
+                            <!-- Button: Delete -->  
+                            <a href="/business/delete" id="deleteButton" type="button" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                    
+                        </div>
                     </div>
-                </div>
-
+                
+                <!-- Add: 2 Buttons (Add, Cancel) -->
                 <% } else { %>
+
+                    <!-- Button: Add -->  
                     <button type="submit" id="submitButton" class="btn btn-secondary">
-                        <i class="fas fa-edit fa-lg"></i>Add
+                        <i class="fas fa-plus-circle"></i> Add It
                     </button>
-                    <a href="/business/list" id="cancelButton" type="button" class="btn btn-dark"><i class="fas fa-undo"></i> Cancel</a>
+                    
+                    <!-- Button: Add -->  
+                    <a href="/business/list" id="cancelButton" type="button" class="btn btn-dark">
+                        <i class="fas fa-undo">
+                    </i> Cancel</a>
 
                 <% } %>
-
     </form>
+    </div>
 </div>

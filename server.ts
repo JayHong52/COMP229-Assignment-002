@@ -13,7 +13,7 @@
  */
 import http from 'http';
 import debug from 'debug';
-debug('week3-2:server');
+debug('comp229-assignment2');
 
 import app from './server/config/app';
 
@@ -54,7 +54,6 @@ function normalizePort(val: string) {
     // port number
     return port;
   }
-
   return false;
 }
 

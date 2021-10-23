@@ -92,7 +92,6 @@ export const isLoggedIn = (req: Request, res: Response, done: (error: any, user?
     if (!req.user) {
         return res.status(401).json({ msg: 'Unauthorized' })
     }
-
     done(null, req.user);
 }
 

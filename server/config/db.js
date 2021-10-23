@@ -4,5 +4,5 @@ exports.Secret = exports.HostName = exports.RemoteUri = exports.LocalUri = void 
 exports.LocalUri = "mongodb://localhost:27017/portfolio";
 exports.RemoteUri = "mongodb+srv://jhong52:jhong52password@comp229-f2021.ikl47.mongodb.net/portfolio?retryWrites=true&w=majority";
 exports.HostName = "JayHong-MongoDB Atlas";
-exports.Secret = "notSoSecret";
+exports.Secret = "NotSoSecret";
 //# sourceMappingURL=db.js.map

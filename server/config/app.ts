@@ -1,13 +1,14 @@
 /*=============================================
   FileName: config/app.ts
-  ProjectName: COMP229-005, Assignment #1
+  ProjectName: COMP229-005, Assignment #2
   CompanyName: Centennial Collge, Fall 2021
   Author: Jiwoong Hong, 301153138
-  Date: 2021-10-02
+  Date: 2021-10-22
   ============================================*/
 
-// Installed 3rd Party Packages
-
+/*============================================*/
+/* Installed 3rd Party Packages               */
+/*============================================*/
 import createError, { HttpError } from "http-errors";
 import express from 'express';
 import path from 'path';
@@ -22,12 +23,16 @@ import session from 'express-session'
 import flash from 'connect-flash';
 import { isLoggedIn } from "../middlewares/auth";
 
-// Import Routers
+/*============================================*/
+/* Import Routers                             */
+/*============================================*/
 import indexRouter from '../routes/index';
 import businessRouter from '../routes/business';
 import userRouter from '../routes/user';
 
-// Database Configuration 
+/*============================================*/
+/* Database Configuration                     */
+/*============================================*/
 import * as DBConfig from './db';  
 mongoose.connect((DBConfig.RemoteUri) ? DBConfig.RemoteUri : DBConfig.LocalUri);
 
@@ -42,7 +47,6 @@ const StoreOptions = {
     maxAge: 600000
   }
 }
-
 const DB = mongoose.connection;
 
 DB.on('error', console.error.bind(console, 'Connection Error:'));
@@ -50,6 +54,10 @@ DB.once('open', ()=> {
   console.log('Connected to MongoDB: @' + DBConfig.HostName);
 });
 
+
+/*============================================*/
+/* Express Configuration                      */
+/*============================================*/
 const app = express(); 
 
 // view engine setup
