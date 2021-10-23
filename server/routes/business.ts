@@ -18,7 +18,7 @@ router.get('/edit/:id', DisplayBusinessEditPage);
 
 // Business-edit : PROCESS
 router.post('/edit/:id', ProcessBusinessEditPage);
-
+  
 // Business-edit : Create - DISPLAY
 router.get('/add', DisplayBusinessAddPage);
 

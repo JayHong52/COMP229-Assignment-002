@@ -24,7 +24,6 @@ function DisplayBusinessEditPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        console.log(businessListItemToEdit);
         res.render('index', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
     });
 }

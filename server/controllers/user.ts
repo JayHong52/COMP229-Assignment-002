@@ -10,7 +10,6 @@ import { NextFunction, Request, Response } from "express";
 import passport from "passport";
 import { UserDisplayName } from "../utils";
 
-
 // =======================
 //   DISPLAY: Login Page
 // =======================
@@ -22,7 +21,7 @@ export async function DisplayLogInPage(req: Request, res: Response) {
 }
 
 // =======================
-//   Process: Login Page
+//   PROCESS: Login Page
 // =======================
 export function ProcessLogInPage(req: Request, res: Response, next: NextFunction) { 
     return res.redirect('/business/list')
