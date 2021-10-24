@@ -18,7 +18,7 @@ const utils_1 = require("../utils");
 function DisplayLogInPage(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.user) {
-            return res.render('index', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
+            return res.render('index-sub', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/business/list');
     });
@@ -31,19 +31,19 @@ exports.ProcessLogInPage = ProcessLogInPage;
 function DisplayRegisterPage(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.user) {
-            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
+            return res.render('index-sub', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/business/list');
     });
 }
 exports.DisplayRegisterPage = DisplayRegisterPage;
 function ProcessRegisterPage(req, res, next) {
-    passport_1.default.authenticate('signup', function (err, user, info) {
+    passport_1.default.authenticate('register', function (err, user, info) {
         if (err) {
             return next(err);
         }
         if (!user) {
-            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: (0, utils_1.UserDisplayName)(req) });
+            return res.render('index-sub', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: (0, utils_1.UserDisplayName)(req) });
         }
         return res.redirect('/auth/login');
     })(req, res, next);
@@ -54,7 +54,7 @@ function ProcessLogout(req, res) {
         if (err) {
             return err;
         }
-        res.redirect('/auth/login');
+        res.redirect('/');
     });
 }
 exports.ProcessLogout = ProcessLogout;

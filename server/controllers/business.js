@@ -12,7 +12,7 @@ function DisplayBusinessListPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: (0, utils_1.UserDisplayName)(req) });
+        res.render('index-sub', { title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: (0, utils_1.UserDisplayName)(req) });
     }).sort('name');
 }
 exports.DisplayBusinessListPage = DisplayBusinessListPage;
@@ -24,7 +24,7 @@ function DisplayBusinessEditPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
+        res.render('index-sub', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: (0, utils_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayBusinessEditPage = DisplayBusinessEditPage;
@@ -48,7 +48,7 @@ function ProcessBusinessEditPage(req, res, next) {
 }
 exports.ProcessBusinessEditPage = ProcessBusinessEditPage;
 function DisplayBusinessAddPage(req, res, next) {
-    res.render('index', { title: 'Add Business Contact', page: 'business/business-edit', item: '', displayName: (0, utils_1.UserDisplayName)(req) });
+    res.render('index-sub', { title: 'Add Business Contact', page: 'business/business-edit', item: '', displayName: (0, utils_1.UserDisplayName)(req) });
 }
 exports.DisplayBusinessAddPage = DisplayBusinessAddPage;
 function ProcessBusinessAddPage(req, res, next) {

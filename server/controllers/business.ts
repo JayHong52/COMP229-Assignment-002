@@ -20,7 +20,7 @@ export function DisplayBusinessListPage(req: express.Request, res: express.Respo
             console.error(err);
             res.end(err);
         }
-        res.render('index', {title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: UserDisplayName(req)})
+        res.render('index-sub', {title: 'Business Contact List', page: 'business/business-list', business: businessCollection, displayName: UserDisplayName(req)})
         }
     ).sort('name'); 
 };
@@ -35,7 +35,7 @@ export function DisplayBusinessEditPage(req: express.Request, res: express.Respo
             console.error(err);
             res.end(err);
         }
-        res.render('index', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: UserDisplayName(req)})
+        res.render('index-sub', { title: "Business Contact Update", page: "business/business-edit", item: businessListItemToEdit, displayName: UserDisplayName(req)})
     })
 };
 
@@ -64,7 +64,7 @@ export function ProcessBusinessEditPage(req: express.Request, res: express.Respo
 //   Business-edit : Create - DISPLAY
 // ====================================
 export function DisplayBusinessAddPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-    res.render('index', { title: 'Add Business Contact', page: 'business/business-edit', item: '', displayName: UserDisplayName(req) });
+    res.render('index-sub', { title: 'Add Business Contact', page: 'business/business-edit', item: '', displayName: UserDisplayName(req) });
 }
 
 // ====================================

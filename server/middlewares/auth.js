@@ -27,20 +27,22 @@ const loginFunction = (req, username, password, done) => __awaiter(void 0, void 
     if (!user) {
         return done(null, false, { message: "User does not exist" });
     }
+    ;
     if (!(yield user.isValidPassword(password))) {
         return done(null, false, { message: "Password is not valid" });
     }
-    console.log("User Authenticated Successfully");
+    ;
     return done(null, user);
 });
 const signupFunction = (req, username, password, done) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { username, password, FirstName, LastName, email } = req.body;
+        const { username, password, firstName, lastName, email } = req.body;
         console.log(req.body);
-        if (!username || !password || !email || !FirstName || !LastName) {
+        if (!username || !password || !email || !firstName || !lastName) {
             console.log("Invalid body fields");
             return done(null, false);
         }
+        ;
         const query = {
             $or: [{ username: username }, { email: email }]
         };
@@ -56,7 +58,7 @@ const signupFunction = (req, username, password, done) => __awaiter(void 0, void
                 username,
                 password,
                 email,
-                displayName: FirstName + " " + LastName
+                displayName: firstName + " " + lastName
             };
             const newUser = new user_1.default(userData);
             yield newUser.save();
@@ -68,14 +70,16 @@ const signupFunction = (req, username, password, done) => __awaiter(void 0, void
     }
 });
 passport_1.default.use('login', new LocalStrategy(strategyOptions, loginFunction));
-passport_1.default.use('signup', new LocalStrategy(strategyOptions, signupFunction));
+passport_1.default.use('register', new LocalStrategy(strategyOptions, signupFunction));
 const isLoggedIn = (req, res, done) => {
     if (!req.user) {
-        return res.status(401).json({ msg: 'Unauthorized' });
+        console.log(' Redirecting: /auth/login ');
+        return res.redirect('/auth/login');
     }
     done(null, req.user);
 };
 exports.isLoggedIn = isLoggedIn;
+;
 passport_1.default.serializeUser((user, done) => {
     done(null, user._id);
 });

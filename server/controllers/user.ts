@@ -15,7 +15,8 @@ import { UserDisplayName } from "../utils";
 // =======================
 export async function DisplayLogInPage(req: Request, res: Response) {
     if (!req.user) {
-        return res.render('index', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) })
+        console.log('?');
+        return res.render('index-sub', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) })
     }
     return res.redirect('/business/list');
 }
@@ -23,7 +24,7 @@ export async function DisplayLogInPage(req: Request, res: Response) {
 // =======================
 //   PROCESS: Login Page
 // =======================
-export function ProcessLogInPage(req: Request, res: Response, next: NextFunction) { 
+export function ProcessLogInPage(req: Request, res: Response, next: NextFunction) {
     return res.redirect('/business/list')
 }
 
@@ -32,7 +33,7 @@ export function ProcessLogInPage(req: Request, res: Response, next: NextFunction
 // ==========================
 export async function DisplayRegisterPage(req: Request, res: Response, next: NextFunction) {
     if (!req.user) {
-        return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req) })
+        return res.render('index-sub', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req) })
     }
     return res.redirect('/business/list');
 }
@@ -41,13 +42,12 @@ export async function DisplayRegisterPage(req: Request, res: Response, next: Nex
 //   PROCESS: Register Page
 // ==========================
 export function ProcessRegisterPage(req: Request, res: Response, next: NextFunction) {
-    passport.authenticate('signup', function (err, user, info) {
-        //console.log(err, user, info);
+    passport.authenticate('register', function (err, user, info) {
         if (err) {
             return next(err);
         }
         if (!user) {
-            return res.render('index', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: UserDisplayName(req) })
+            return res.render('index-sub', { title: 'Register', page: 'auth/register', messages: req.flash('registerMessage', 'User Already Exists'), displayName: UserDisplayName(req) })
         }
         return res.redirect('/auth/login');
     })(req, res, next);
@@ -61,6 +61,6 @@ export function ProcessLogout(req: Request, res: Response) {
         if (err) {
             return err;
         }
-        res.redirect('/auth/login');
+        res.redirect('/');
     })
 }

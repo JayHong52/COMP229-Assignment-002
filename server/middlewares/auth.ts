@@ -1,11 +1,3 @@
-/*=============================================
-  FileName: middleware/auth.ts
-  ProjectName: COMP229-005, Assignment #2
-  CompanyName: Centennial Collge, Fall 2021
-  Author: Jiwoong Hong, 301153138
-  Date: 2021-10-22
-  ============================================*/
-
 import passport from "passport";
 import passportLocal, { IVerifyOptions } from 'passport-local';
 import UserModel from '../models/user';
@@ -18,8 +10,9 @@ const strategyOptions: any = {
     passwordField: "password",
     passReqToCallback: true
 };
-
-
+// =================
+//  Log-In Function
+// =================
 const loginFunction: any = async (
     req: Request,
     username: string,
@@ -30,16 +23,16 @@ const loginFunction: any = async (
 
     if (!user) {
         return done(null, false, { message: "User does not exist" });
-    }
-
+    };
     if (!(await user.isValidPassword(password))) {
         return done(null, false, { message: "Password is not valid" });
-    }
-
-    console.log("User Authenticated Successfully");
+    };
     return done(null, user);
-}
+};
 
+// ==================
+//  Sign-Up Function
+// ==================
 const signupFunction = async (
     req: Request,
     username: string,
@@ -47,13 +40,13 @@ const signupFunction = async (
     done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
     try {
         //deconstructing
-        const { username, password, FirstName, LastName, email } = req.body;
+        const { username, password, firstName, lastName, email } = req.body;
         console.log(req.body);
 
-        if (!username || !password || !email || !FirstName || !LastName) {
+        if (!username || !password || !email || !firstName || !lastName) {
             console.log("Invalid body fields");
             return done(null, false);
-        }
+        };
 
         const query = {
             $or: [{ username: username }, { email: email }]
@@ -72,7 +65,7 @@ const signupFunction = async (
                 username,
                 password,
                 email,
-                displayName: FirstName + " " + LastName
+                displayName: firstName + " " + lastName
             }
 
             const newUser = new UserModel(userData);
@@ -86,18 +79,22 @@ const signupFunction = async (
 };
 
 passport.use('login', new LocalStrategy(strategyOptions, loginFunction));
-passport.use('signup', new LocalStrategy(strategyOptions, signupFunction));
+passport.use('register', new LocalStrategy(strategyOptions, signupFunction));
 
+// ==================
+//  isLogged-In: 
+// ==================
 export const isLoggedIn = (req: Request, res: Response, done: (error: any, user?: any, options?: IVerifyOptions) => void) => {
     if (!req.user) {
-        return res.status(401).json({ msg: 'Unauthorized' })
+        console.log(' Redirecting: /auth/login ');
+        return res.redirect('/auth/login');
     }
     done(null, req.user);
-}
+};
 
 interface User {
     _id?: String;
-}
+};
 
 passport.serializeUser((user: User, done) => {
     done(null, user._id)
@@ -107,6 +104,6 @@ passport.deserializeUser((userId, done) => {
     UserModel.findById(userId, function (err: any, user: any) {
         done(err, user);
     });
-})
+});
 
-export default passport;
+export default passport;    

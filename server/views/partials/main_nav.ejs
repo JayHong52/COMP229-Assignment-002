@@ -54,17 +54,19 @@
         <a class="nav-link" aria-current="page" href="/contact">contact us</a>
         </li>
 
-        <!-- Log in Menu -->
+        <!-- Log in Menu -->  
 
-        <% if(displayName && title=="Business Contact List") { %>
+        <!-- Logged in: BizContact: Active -->
+        <% if ( typeof displayName == 'string' && displayName && title=="Business Contact List" ) { %>
         <li class="nav-item active bg-secondary rounded-3">
         <a class="nav-link" href="/business/list">businessContacts</a>
         </li>       
         <li class="nav-item">
         <a class="nav-link" href="/auth/logout"><i class="fas fa-sign-out-alt fa-lg"></i> Logout</a>
         </li>
-        
-        <% } else if (displayName && title!="Business Contact List"){ %>
+                
+        <!-- Logged in: BizContact: Not Active -->
+        <% } else if ( typeof displayName == 'string' && displayName && title!="Business Contact List"){ %>
 
         <li class="nav-item">
         <a class="nav-link" href="/business/list">businessContacts</a>
@@ -77,7 +79,7 @@
 
         <li class="nav-item">
         <a class="nav-link" href="/auth/login"><i class="fas fa-sign-in-alt fa-lg"></i> Login</a>
-        </li>
+        </li>      
 
         <% } %>
       </ul>
