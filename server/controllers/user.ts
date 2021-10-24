@@ -15,17 +15,9 @@ import { UserDisplayName } from "../utils";
 // =======================
 export async function DisplayLogInPage(req: Request, res: Response) {
     if (!req.user) {
-        console.log('?');
         return res.render('index-sub', { title: 'Login', page: 'auth/login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) })
     }
     return res.redirect('/business/list');
-}
-
-// =======================
-//   PROCESS: Login Page
-// =======================
-export function ProcessLogInPage(req: Request, res: Response, next: NextFunction) {
-    return res.redirect('/business/list')
 }
 
 // ==========================
