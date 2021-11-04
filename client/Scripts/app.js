@@ -8,7 +8,7 @@
 
 (function () {
     function start() {
-        console.log("App Started: COMP229 Assignment 1");
+        console.log("App Started: COMP229 Portfolio Project");
     }
     window.addEventListener("load", start);
 }());
