@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProcessLogout = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.ProcessLogInPage = exports.DisplayLogInPage = void 0;
+exports.ProcessLogout = exports.ProcessRegisterPage = exports.DisplayRegisterPage = exports.DisplayLogInPage = void 0;
 const passport_1 = __importDefault(require("passport"));
 const utils_1 = require("../utils");
 function DisplayLogInPage(req, res) {
@@ -24,10 +24,6 @@ function DisplayLogInPage(req, res) {
     });
 }
 exports.DisplayLogInPage = DisplayLogInPage;
-function ProcessLogInPage(req, res, next) {
-    return res.redirect('/business/list');
-}
-exports.ProcessLogInPage = ProcessLogInPage;
 function DisplayRegisterPage(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!req.user) {
