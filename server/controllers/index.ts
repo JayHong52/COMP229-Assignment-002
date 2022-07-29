@@ -30,6 +30,6 @@ export function DisplayContactUsPage(req: express.Request, res: express.Response
 };
 
 export function DisplayLogInPage(req: express.Request, res: express.Response, next: express.NextFunction) {
-    res.render('index', { title: 'Log In', page: 'login', displayName: UserDisplayName(req) });
+    res.render('index', { title: 'Sign In', page: 'login', displayName: UserDisplayName(req) });
 };
 

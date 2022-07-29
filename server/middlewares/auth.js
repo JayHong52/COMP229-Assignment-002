@@ -70,7 +70,7 @@ const signupFunction = (req, username, password, done) => __awaiter(void 0, void
     }
 });
 passport_1.default.use('login', new LocalStrategy(strategyOptions, loginFunction));
-passport_1.default.use('register', new LocalStrategy(strategyOptions, signupFunction));
+passport_1.default.use('signup', new LocalStrategy(strategyOptions, signupFunction));
 const isLoggedIn = (req, res, done) => {
     if (!req.user) {
         console.log(' Redirecting: /auth/login ');

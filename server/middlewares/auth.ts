@@ -33,7 +33,7 @@ const loginFunction: any = async (
 // ==================
 //  Sign-Up Function
 // ==================
-const signupFunction = async (
+const signupFunction: any = async (
     req: Request,
     username: string,
     password: string,
@@ -79,7 +79,7 @@ const signupFunction = async (
 };
 
 passport.use('login', new LocalStrategy(strategyOptions, loginFunction));
-passport.use('register', new LocalStrategy(strategyOptions, signupFunction));
+passport.use('signup', new LocalStrategy(strategyOptions, signupFunction));
 
 // ==================
 //  isLogged-In: 
